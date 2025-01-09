@@ -3,6 +3,30 @@
 <div class="card mb-4">
         <div class="card-header"><i class="fas fa-table mr-1"></i>Data Produk</div>
         <div class="m-4">
+            {{-- <form action="/cari" method="GET">
+            @csrf
+            <div class="form-row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input name="cari" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-success" value="Cari Data">
+                    </div>
+                </div>
+            </div>
+        </form> --}}
+        <form action="/cari" method="GET">
+                      @csrf
+                      <div class="input-group mb-3">
+                          <input type="text" class="form-control" name="cari" placeholder="Cari Produk">
+                          <button class="btn btn-primary" type="submit">Cari</button>
+                      </div>
+                  </form>
+        </div>
+        <div class="m-4">
             <a class="btn btn-secondary" href="{{route('produk.create')}}">Tambah Data</a>
         </div>
         <div class="card-body">
