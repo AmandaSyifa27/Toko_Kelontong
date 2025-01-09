@@ -47,6 +47,18 @@ class ProdukController extends Controller
     //     return view('Produk.Index', compact('produk'));
     // }
 
+    // public function cari(Request $request)
+    // {
+    //     $dari = $request->input('dari');
+    //     $sampai = $request->input('sampai');
+    //     $query = "created_at BETWEEN '%".$dari."%' AND '%".$sampai."%' ";
+    //     $produks = DB::table('tbl_produk')
+    //                 ->join('tbl_kriteria_produk', 'tbl_kriteria_produk.id','=','tbl_produk.id_kriteria')
+    //                 ->whereRaw($query)
+    //                 ->get();
+    //     return view('produk.index',compact('produks'))->with('i');
+    // }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -18,6 +18,22 @@
                 </div>
             </div>
         </form> --}}
+
+        {{-- <form action="/cari" method="GET">
+            @csrf
+            <div class="form-row">
+                <div class="col-md-3"><div class="form-group">
+                    <input type="date" name="dari" class="form-control">
+                </div></div>
+                <div class="col-md-3"><div class="form-group">
+                    <input type="date" name="sampai" class="form-control">
+                </div></div>
+                <div class="col-md-3"><div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-success" values="Cari Data">
+                </div></div>
+            </div>
+        </form> --}}
+        
         <form action="/cari" method="GET">
                       @csrf
                       <div class="input-group mb-3">
