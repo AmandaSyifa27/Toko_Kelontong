@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\Models\Produk;
+use App\Models\KriteriaProduk;
 // use Faker\Core\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB as FacadesDB;
 
 class ProdukController extends Controller
 {
@@ -13,10 +16,18 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function index()
+    // {
+    //     // $produks = Produk::latest()->paginate(20);
+    //     $produks = DB::table('tbl_produk') -> join('tbl_kriteria_produk', 'tbl_kriteria_produk.id','=','tbl_produk.id_kriteria')->get();
+    //     return view('produk.index',compact('produks'))->with('i');
+    // }
+
     public function index()
     {
-        $produks = Produk::latest()->paginate(20);
-        return view('produk.index',compact('produks'))->with('i');
+        // $produks = Produk::latest()->paginate(20);
+        $produks = Produk::all();
+        return view('produk.index',compact('produks'));
     }
 
     /**
@@ -26,7 +37,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        return view('produk.create');
+        $kriterias = KriteriaProduk::all();
+        return view('produk.create', compact('kriterias'));
     }
 
     /**
@@ -42,6 +54,7 @@ class ProdukController extends Controller
             'jenis' => 'required',
             'stok' => 'required',
             'harga' => 'required',
+            'id_kriteria' => 'required',
             'ket' => 'required',
             'gambar' => 'required',
         ]);
@@ -56,6 +69,7 @@ class ProdukController extends Controller
             "jenis" => $request->jenis,
             "stok" => $request->stok,
             "harga" => $request->harga,
+            "id_kriteria" => $request->id_kriteria,
             "ket" => $request->ket,
             "gambar" => $nama_file,
         ]);

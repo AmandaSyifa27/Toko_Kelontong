@@ -12,6 +12,10 @@ class Produk extends Model
     public $table = "tbl_produk";
 
     protected $fillable = [
-        'nm_produk', 'jenis', 'stok', 'harga', 'ket', 'gambar'
+        'nm_produk', 'jenis', 'stok', 'harga', 'id_kriteria', 'ket', 'gambar'
     ];
+
+    public function kriteria(){
+        return $this->belongsTo(KriteriaProduk::class, 'id_kriteria', 'id');
+    }
 }

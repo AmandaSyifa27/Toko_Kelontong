@@ -43,6 +43,15 @@
         </div>
       </div>
       <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Kriteria Produk</label>
+        <select name="id_kriteria" type="number" class="form-control" id="exampleFormControlInput1" placeholder="Rp.">
+          <option value="">Pilih Kriteria Produk</option>
+          @foreach ($kriterias as $kriteria)
+            <option value="{{ $kriteria->id }}">{{ $kriteria->nm_kriteria }}</option>
+          @endforeach
+        </select>
+    </div>
+      <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Keterangan</label>
         <textarea name="ket" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>

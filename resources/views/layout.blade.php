@@ -52,8 +52,11 @@
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                             ></a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="{{route('produk.index')}}">Data Produk</a>
-                                    <a class="nav-link" href="{{route('kriteria.index')}}">Data Kriteria Produk</a></nav>
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{route('produk.index')}}">Data Produk</a>
+                                    <a class="nav-link" href="{{route('kriteria.index')}}">Data Kriteria Produk</a>
+                                    <a class="nav-link" href="{{route('transaksi.index')}}">Data Transaksi</a>
+                                </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>

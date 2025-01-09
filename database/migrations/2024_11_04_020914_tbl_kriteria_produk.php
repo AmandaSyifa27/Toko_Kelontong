@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('kd_kriteria');
             $table->string('nm_kriteria');
-            $table->text('keterangan');
+            $table->text('keteranigan');
             $table->timestamps();
         });
     }

@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('tbl_transaksi', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nm_produk');
+            $table->string('no_transaksi');
             $table->string('nm_customer');
-            $table->integer('jumlah');
-            $table->date('tanggal_transaksi');
-            $table->double('harga');
+            $table->integer('id_produk');
+            $table->integer('jumlah_beli');
+            $table->double('diskon');
+            $table->double('total');
             $table->timestamps();
         });
     }

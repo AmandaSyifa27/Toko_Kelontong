@@ -21,6 +21,7 @@
                             <th>Jenis</th>
                             <th>Stok</th>
                             <th>Harga</th>
+                            <th>Kriteria Produk</th>
                             <th>Keterangan</th>
                             <th>Action</th>
                         </tr>
@@ -33,12 +34,13 @@
                             <th>Jenis</th>
                             <th>Stok</th>
                             <th>Harga</th>
+                            <th>Kriteria Produk</th>
                             <th>Keterangan</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($produks as $produk)
+                        {{-- @foreach ($produks as $produk)
                             
                         <tr>
                             <td>{{ ++$i }}</td>
@@ -47,6 +49,7 @@
                             <td>{{ $produk->jenis }}</td>
                             <td>{{ $produk->stok }}</td>
                             <td>{{ $produk->harga }}</td>
+                            <td>{{ $produk->nm_kriteria }}</td>
                             <td>{{ $produk->ket }}</td>
                             <td>
                                 <form action="{{ route('produk.destroy', $produk->id) }}" method="POST">
@@ -57,7 +60,28 @@
                                 </form>
                             </td>
                         </tr>
-                        @endforeach
+                        @endforeach --}}
+                        @foreach ($produks as $key => $produk)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td><center><img src="{{ url('/Foto_Produk/'.$produk->gambar) }}" width="100" alt="{{ $produk->nm_produk }}"></center></td>
+                            <td>{{ $produk->nm_produk }}</td>
+                            <td>{{ $produk->jenis }}</td>
+                            <td>{{ $produk->stok }}</td>
+                            <td>{{ $produk->harga }}</td>
+                            <td>{{ $produk->kriteria->nm_kriteria }}</td>
+                            <td>{{ $produk->ket }}</td>
+                        <td>
+                            <form action="{{ route('produk.destroy', $produk->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <a class="btn btn-warning btn-sm" href="{{ route('produk.edit', $produk->id) }}">Edit</a>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+
                     </tbody>
                 </table>
             </div>
