@@ -28,4 +28,7 @@ Route::post('/login', [UserController::class, 'authenticate']);
 Route::post('/logout', [UserController::class, 'logout'])->name('logout'); 
 
 // Route::get('/cari', [App\Http\Controllers\ProdukController::class, 'cari']);
+// Route::get('/cari', [App\Http\Controllers\ProdukController::class, 'cari']);
 Route::get('/cari', [App\Http\Controllers\ProdukController::class, 'cari'])->name('cari');
+
+Route::get('/welcome', [App\Http\Controllers\DashboardController::class, 'index'])->name('welcome');

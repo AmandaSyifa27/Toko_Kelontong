@@ -33,11 +33,23 @@ class ProdukController extends Controller
     public function cari(Request $request)
     {
         $cari = $request->input('cari');
-        $query = "nm_produk LIKE '%".$cari."%' OR jenis LIKE '%".$cari."%'";
-        // $produks = Produk::latest()->paginate(20);
-        $produks = DB::table('tbl_produk') -> join('tbl_kriteria_produk', 'tbl_kriteria_produk.id','=','tbl_produk.id_kriteria')->whereRaw($query)->get();
+        $query = "nm_produk LIKE '%".$cari."%' OR jenis LIKE '%".$cari."%' ";
+        $produks = DB::table('tbl_produk')
+                    ->join('tbl_kriteria_produk', 'tbl_kriteria_produk.id','=','tbl_produk.id_kriteria')
+                    ->whereRaw($query)
+                    ->get();
+        // return dd($produks);
         return view('produk.index',compact('produks'))->with('i');
     }
+
+    // public function cari(Request $request)
+    // {
+    //     $cari = $request->input('cari');
+    //     $query = "nm_produk LIKE '%".$cari."%' OR jenis LIKE '%".$cari."%'";
+    //     // $produks = Produk::latest()->paginate(20);
+    //     $produks = DB::table('tbl_produk') -> join('tbl_kriteria_produk', 'tbl_kriteria_produk.id','=','tbl_produk.id_kriteria')->whereRaw($query)->get();
+    //     return view('produk.index',compact('produks'))->with('i');
+    // }
     // public function cari(Request $request){
     //     $cari = $request->input('cari');
     //     $produk = Produk::where('nama_produk', 'like', "%".$request->cari."%")->orWhere('jenis', 'like', "%".$request->cari."%")->get();

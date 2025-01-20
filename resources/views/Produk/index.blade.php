@@ -3,7 +3,7 @@
 <div class="card mb-4">
         <div class="card-header"><i class="fas fa-table mr-1"></i>Data Produk</div>
         <div class="m-4">
-            {{-- <form action="/cari" method="GET">
+            {{-- <form action="{{route('produk.cari')}}" method="GET">
             @csrf
             <div class="form-row">
                 <div class="col-md-3">
@@ -13,11 +13,23 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <input type="submit" name="submit" class="btn btn-success" value="Cari Data">
+                        <button type="submit" name="submit" class="btn btn-success">Cari Data</button>
                     </div>
                 </div>
             </div>
         </form> --}}
+
+        <form action="/cari" method="GET">
+            @csrf
+            <div class="form-row">
+                <div class="col-md-3"><div class="form-group">
+                    <input type="text" name="cari" class="form-control">
+                </div></div>
+                <div class="col-md-3"><div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-success" values="Cari Data">
+                </div></div>
+            </div>
+        </form>
 
         {{-- <form action="/cari" method="GET">
             @csrf
@@ -34,13 +46,13 @@
             </div>
         </form> --}}
         
-        <form action="/cari" method="GET">
+        {{-- <form action="/cari" method="GET">
                       @csrf
                       <div class="input-group mb-3">
                           <input type="text" class="form-control" name="cari" placeholder="Cari Produk">
                           <button class="btn btn-primary" type="submit">Cari</button>
                       </div>
-                  </form>
+                  </form> --}}
         </div>
         <div class="m-4">
             <a class="btn btn-secondary" href="{{route('produk.create')}}">Tambah Data</a>
@@ -48,7 +60,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 @if ($message = Session::get('success'))
-                <div class="aler alert-success">
+                <div class="alert alert-success">
                     <p>{{ $message }}</p>
                 </div>                    
                 @endif
@@ -109,7 +121,11 @@
                             <td>{{ $produk->jenis }}</td>
                             <td>{{ $produk->stok }}</td>
                             <td>{{ $produk->harga }}</td>
+                            @if (request()->is('cari'))                                
+                            <td>{{ $produk->nm_kriteria }}</td>
+                            @else
                             <td>{{ $produk->kriteria->nm_kriteria }}</td>
+                            @endif
                             <td>{{ $produk->ket }}</td>
                         <td>
                             <form action="{{ route('produk.destroy', $produk->id) }}" method="POST">
